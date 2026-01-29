@@ -1,7 +1,7 @@
 import re
 
 # Extract items and their prices from receipt text
-def extract_items_prices(text):
+def extract_items_prices(text: str)-> list[dict] | None:
     items = []
     pending_item = None
     lines = text.splitlines()
@@ -37,21 +37,24 @@ def extract_items_prices(text):
                 items.append({
                     "item": pending_item,
                     "quantity": int(dl_price.group(1)),
-                    "unit price" : float(dl_price.group(2)),
-                    "total price": float(dl_price.group(3))
+                    "unit_price" : float(dl_price.group(2)),
+                    "total_price": float(dl_price.group(3))
                 })
                 pending_item = None
 
     return items or None
 
 
-def extract_subtotal(text):
+# Extract subtotal from receipt text
+def extract_subtotal(text: str)->float | None:
     pattern = r'SUBTOTAL\s+(\d+\.\d{2})'
     
     subtotal = re.search(pattern, text)
     return float(subtotal.group(1)) if subtotal else None
 
-def extract_tax(text):
+
+# Extract taxes from receipt text
+def extract_tax(text: str)-> list[dict] | None:
     tax = []
     pattern = r'TAX\s+(\d+)\s+(\d+)%\s+(\d+\.\d{2})'
 
@@ -66,14 +69,17 @@ def extract_tax(text):
 
     return tax or None
 
-def extract_total(text):
+
+# Extract total from receipt text
+def extract_total(text: str)-> float | None:
     pattern = r'\bTOTAL\b\s+(\d+\.\d{2})'
 
     total = re.search(pattern, text)
     return float(total.group(1)) if total else None 
 
 
-def extract_last_digits(text):
+# Extract last 4 digits from receipt text
+def extract_last_digits(text: str)-> str | None:
     pattern = r'(?:VISA|MASTERCARD)[^\d]*(\d{4})'
 
     last_digits = re.search(pattern, text)

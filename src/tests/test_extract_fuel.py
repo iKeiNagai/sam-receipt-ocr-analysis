@@ -4,7 +4,7 @@ from src.utils import *
 class TestExtractPumpFuel:
     def test_pump_fuel_present(self):
         text = "Pump# 5 UNLEAD\nGallons 10.077"
-        assert extract_pump_fuel(text) == {"pump number": 5, "fuel type": "UNLEAD"}
+        assert extract_pump_fuel(text) == {"pump_number": 5, "fuel_type": "UNLEAD"}
 
     def test_no_pump_fuel(self):
         text = "Pump# \nGallons 10.077"

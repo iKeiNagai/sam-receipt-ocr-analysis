@@ -3,11 +3,11 @@ from src.utils import *
 class ItemsParser:
 
     # Extract structured items-receipt data from OCR text
-    def parse(self, ocr_text):
+    def parse(self, ocr_text: str)-> dict:
         return{
             "type" : "items",
             "club_manager" : extract_manager(ocr_text),
-            "date_time" : extract_timestamp(ocr_text),
+            "timestamp" : extract_timestamp(ocr_text),
             "location" : extract_location(ocr_text),
             "items" : extract_items_prices(ocr_text),
             "subtotal" : extract_subtotal(ocr_text),

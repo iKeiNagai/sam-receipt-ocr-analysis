@@ -6,7 +6,7 @@ class TestExtractItemsPrices:
         text = "00001 APPLES 10.00 X\n00002 BANANAS\n2 AT 1 FOR 5.00 10.00 Y\n"
         assert extract_items_prices(text) == [
             {"item": "APPLES", "price": 10.00},
-            {"item": "BANANAS", "quantity": 2, "unit price": 5.00, "total price": 10.00}
+            {"item": "BANANAS", "quantity": 2, "unit_price": 5.00, "total_price": 10.00}
         ]
 
     def test_no_items_prices(self):
@@ -16,8 +16,8 @@ class TestExtractItemsPrices:
     def test_multiple_double_line_items(self):
         text ="00001 APPLES\n3 AT 1 FOR 2.00 6.00 X\n00002 BANANAS\n2 AT 1 FOR 5.00 10.00 Y\n"
         assert extract_items_prices(text) == [
-            {"item": "APPLES", "quantity": 3, "unit price": 2.00, "total price": 6.00},
-            {"item": "BANANAS", "quantity": 2, "unit price": 5.00, "total price": 10.00}
+            {"item": "APPLES", "quantity": 3, "unit_price": 2.00, "total_price": 6.00},
+            {"item": "BANANAS", "quantity": 2, "unit_price": 5.00, "total_price": 10.00}
         ]
 
 

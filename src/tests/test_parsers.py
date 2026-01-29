@@ -14,8 +14,8 @@ class TestParsers:
              }), \
              patch("src.parsers.fuel_parser.extract_location", return_value="ATLANTA, GA"), \
              patch("src.parsers.fuel_parser.extract_pump_fuel", return_value={
-                 "pump number": 1,
-                 "fuel type": "UNLEAD"
+                 "pump_number": 1,
+                 "fuel_type": "UNLEAD"
              }), \
              patch("src.parsers.fuel_parser.extract_gallons", return_value=12.345), \
              patch("src.parsers.fuel_parser.extract_price_per_gallon", return_value=1.234), \
@@ -32,14 +32,14 @@ class TestParsers:
         assert result == {
             "type": "fuel",
             "club_manager": "JOHN",
-            "date_time": {
+            "timestamp": {
                 "date": "01/25/25",
                 "time": "18:47"
             },
             "location": "ATLANTA, GA",
-            "pump_fuel": {
-                "pump number": 1,
-                "fuel type": "UNLEAD"
+            "pump_info": {
+                "pump_number": 1,
+                "fuel_type": "UNLEAD"
             },
             "gallons": 12.345,
             "price_per_gallon": 1.234,
@@ -68,8 +68,8 @@ class TestParsers:
                 {
                     "item": "DL Item",
                     "quantity": 1,
-                    "unit price": 1.23,
-                    "total price": 12.34
+                    "unit_price": 1.23,
+                    "total_price": 12.34
                 }
              ]), \
              patch("src.parsers.items_parser.extract_subtotal", return_value=12.34), \
@@ -93,7 +93,7 @@ class TestParsers:
         assert result == {
             "type": "items",
             "club_manager": "JOHN",
-            "date_time": {
+            "timestamp": {
                 "date": "01/25/25",
                 "time": "18:47"
             },
@@ -106,8 +106,8 @@ class TestParsers:
                 {
                     "item": "DL Item",
                     "quantity": 1,
-                    "unit price": 1.23,
-                    "total price": 12.34
+                    "unit_price": 1.23,
+                    "total_price": 12.34
                 }
             ],
             "subtotal": 12.34,

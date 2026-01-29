@@ -2,7 +2,7 @@ from pathlib import Path
 import json
 
 # Saves JSON data into a structured directory based on its type
-def save_json(data, filename):
+def save_json(data: dict, filename: str)-> None:
     data_type = data.get('type')
 
     if not data_type:

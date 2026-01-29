@@ -1,7 +1,7 @@
 import re
 
 # Extracts club manager's name from receipt text
-def extract_manager(text):
+def extract_manager(text: str)-> str | None:
    pattern = r'CLUB\s+MANAGER(?:[ ]+([A-Z]+))?'
 
    club_manager = re.search(pattern, text)
@@ -9,7 +9,7 @@ def extract_manager(text):
 
 
 # Extracts date and time from receipt text
-def extract_timestamp(text):
+def extract_timestamp(text: str)-> dict[str, str] | None:
    pattern = r'(\d{2}/\d{2}/\d{2})\s+(\d{2}:\d{2})'
 
    date = re.search(pattern, text)
@@ -21,7 +21,7 @@ def extract_timestamp(text):
 
 
 # Extracts location (city, state) from receipt text
-def extract_location(text):
+def extract_location(text: str)-> str | None:
    pattern = r'[A-Z]+(?:[ ]+[A-Z]+)*,\s+[A-Z]{2}'
 
    location = re.search(pattern, text)
@@ -29,7 +29,7 @@ def extract_location(text):
 
 
 # Extract payment method from receipt text
-def extract_payment_method(text):
+def extract_payment_method(text: str)-> dict[str, str] | None:
    pattern = r'(VISA|MASTERCARD)\s+(CREDIT|DEBIT)'
    
    payment_method = re.search(pattern, text)
