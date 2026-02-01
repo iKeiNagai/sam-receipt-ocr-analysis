@@ -11,7 +11,7 @@ def save_json(data: dict, filename: str)-> None:
     base_dir = Path("xraw-data/processed") / data_type
     base_dir.mkdir(parents=True, exist_ok=True)
 
-    path = base_dir / filename
+    path = base_dir / Path(filename).with_suffix('.json')
 
     with open(path, "w") as file:
         json.dump(data, file, indent=4)
