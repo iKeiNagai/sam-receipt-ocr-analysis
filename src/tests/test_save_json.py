@@ -19,7 +19,7 @@ class TestSaveJson:
         save_json(data, filename)
 
         # Verify that the file was created in the correct directory
-        expected_path = tmp_path / "xraw-data" / "processed" / "fuel" / filename
+        expected_path = tmp_path / "xdata" / "processed" / "fuel" / filename
         assert expected_path.exists()
 
         # Verify the content of the saved JSON file

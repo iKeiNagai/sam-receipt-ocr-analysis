@@ -8,7 +8,7 @@ def save_json(data: dict, filename: str)-> None:
     if not data_type:
         raise ValueError("Missing Type in data")
 
-    base_dir = Path("xraw-data/processed") / data_type
+    base_dir = Path("xdata/processed") / data_type
     base_dir.mkdir(parents=True, exist_ok=True)
 
     path = base_dir / Path(filename).with_suffix('.json')
