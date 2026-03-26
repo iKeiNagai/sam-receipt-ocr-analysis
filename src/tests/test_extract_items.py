@@ -11,7 +11,7 @@ class TestExtractItemsPrices:
 
     def test_no_items_prices(self):
         text = "00001 \n00002 \n"
-        assert extract_items_prices(text) is None
+        assert extract_items_prices(text) == []
 
     def test_multiple_double_line_items(self):
         text ="00001 APPLES\n3 AT 1 FOR 2.00 6.00 X\n00002 BANANAS\n2 AT 1 FOR 5.00 10.00 Y\n"
@@ -43,7 +43,7 @@ class TestExtractTax:
     
     def test_no_tax(self):
         text = "SUBTOTAL 46.83\nTAX \n"
-        assert extract_tax(text) is None
+        assert extract_tax(text) == []
 
 
 # Test for extract_total function

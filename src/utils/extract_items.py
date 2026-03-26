@@ -1,7 +1,7 @@
 import re
 
 # Extract items and their prices from receipt text
-def extract_items_prices(text: str)-> list[dict] | None:
+def extract_items_prices(text: str)-> list[dict]:
     items = []
     pending_item = None
     lines = text.splitlines()
@@ -42,7 +42,7 @@ def extract_items_prices(text: str)-> list[dict] | None:
                 })
                 pending_item = None
 
-    return items or None
+    return items
 
 
 # Extract subtotal from receipt text
@@ -54,7 +54,7 @@ def extract_subtotal(text: str)->float | None:
 
 
 # Extract taxes from receipt text
-def extract_tax(text: str)-> list[dict] | None:
+def extract_tax(text: str)-> list[dict]:
     tax = []
     pattern = r'TAX\s+(\d+)\s+(\d+)%\s+(\d+\.\d{2})'
 
@@ -67,7 +67,7 @@ def extract_tax(text: str)-> list[dict] | None:
             "tax_amount": float(t[2])
         })
 
-    return tax or None
+    return tax
 
 
 # Extract total from receipt text

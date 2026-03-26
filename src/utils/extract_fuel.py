@@ -1,14 +1,14 @@
 import re
 
 # Extracts pump number and fuel type from receipt text
-def extract_pump_fuel(text: str)-> dict[int, str] | None:
+def extract_pump_fuel(text: str)-> dict[int, str]:
     pattern = r'Pump#\s+(\d+)\s+([A-Z]+)'
 
     pump_fuel = re.search(pattern, text)
     return {
         "pump_number": int(pump_fuel.group(1)),
         "fuel_type": pump_fuel.group(2)
-    } if pump_fuel else None
+    } if pump_fuel else {}
 
 
 # Extracts gallons from receipt text

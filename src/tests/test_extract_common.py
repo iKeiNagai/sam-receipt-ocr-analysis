@@ -22,7 +22,7 @@ class TestExtractTimestamp:
 
     def test_no_timestamp(self):
         text = "ATLANTA, GA\nNo timestamp 0102\n"
-        assert extract_timestamp(text) is None
+        assert extract_timestamp(text) == {}
 
 class TestExtractLocation:
     def test_location_present(self):
@@ -45,7 +45,7 @@ class TestExtractPaymentMethod:
 
     def test_no_payment_method(self):
         text = "Total 48.49\nCASH\n"
-        assert extract_payment_method(text) is None
+        assert extract_payment_method(text) == {}
 
     def test_different_payment_method(self):
         text = "Total 48.49\nMASTERCARD DEBIT\n"

@@ -8,7 +8,7 @@ class TestExtractPumpFuel:
 
     def test_no_pump_fuel(self):
         text = "Pump# \nGallons 10.077"
-        assert extract_pump_fuel(text) is None
+        assert extract_pump_fuel(text) == {}
 
 
 # Tests for extract_gallons function
